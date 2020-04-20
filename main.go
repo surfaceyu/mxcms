@@ -7,7 +7,7 @@ import (
 )
 func main() {
 	go rpcsvr.Start()
-	go admin.Start()
-	web.Start()
+	go web.Start()
+	admin.Start()
 	//go srv.Start()
 }

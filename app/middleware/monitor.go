@@ -9,13 +9,13 @@ import (
 var glog *golog.Logger = golog.New("mx-trace")
 
 func TraceGin(ctx *gin.Context) {
-	defer trace(ctx.Request.URL.Path)()
+	defer trace(ctx.Request.Method, ctx.Request.URL.Path)()
 	ctx.Next()
 }
 
-func trace(path string) func() {
+func trace(method string, path string) func() {
 	start := time.Now()
 	return func() {
-		glog.Infoln("%s %s", time.Since(start), path)
+		glog.Infof("%s %s %s", time.Since(start), method, path)
 	}
 }

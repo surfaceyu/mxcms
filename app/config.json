@@ -18,5 +18,6 @@
         "host": "127.0.0.1",
         "port": 8500
     }],
-    "srv": "micro.qgn.srv"
+    "srv": "micro.qgn.srv",
+    "domain": "localhost"
 }

@@ -10,6 +10,13 @@ import (
 
 var app *gin.Engine
 
+func SiteConfig() gin.H{
+	return gin.H{
+		"STATIC_URL":"",
+		"SITE_URL":"",
+	}
+}
+
 func Start(){
 	app = gin.New()
 	app.Use(gin.Recovery())
@@ -18,6 +25,7 @@ func Start(){
 	app.Static("favicon.ico","./public/favicon.ico")
 	app.SetFuncMap(template.FuncMap{
 		"json2stringslice":mxcoreutils.Json2StringSlice,
+		"SiteConfig":SiteConfig,
 	})
 	app.LoadHTMLGlob("app/web/views/**/*")
 	app.GET("/", controller.Index)

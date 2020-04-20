@@ -16,6 +16,7 @@ var (
 	SC        = securecookie.New(hashKey, blockKey)
 	ASYUSERID = "asy-user-id"
 	ASYTOKEN  = "asy-token"
+	ASTROLE   = "asy-role"
 )
 
 func GetMd5String(s string) string {
