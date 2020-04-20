@@ -1,0 +1,10 @@
+{{ define "defaults/index.tmpl" }}
+    {{template "includes/mainnav" .}}
+{{template "includes/header" .}}
+<body>
+{{template "includes/subnav" .}}
+{{template "layouts/article" .}}
+{{template "layouts/gamescore" .}}
+</body>
+{{template "includes/footer" .}}
+{{ end }}

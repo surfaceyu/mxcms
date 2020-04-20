@@ -1,0 +1,22 @@
+{
+    "databases": {
+        "mysql": {
+            "hrefs": "root:password@tcp(127.0.0.1:3306)/mxcms?charset=utf8&parseTime=true",
+            "MaxIdleConns": 5,
+            "MaxOpenConns": 50
+        },
+        "redis": {
+            "host": "127.0.0.1",
+            "port": 6379
+        }
+    },
+    "etcd": [{
+        "host": "127.0.0.1",
+        "port": 2379
+    }],
+    "consul": [{
+        "host": "127.0.0.1",
+        "port": 8500
+    }],
+    "srv": "micro.qgn.srv"
+}

@@ -1,0 +1,119 @@
+{{define "layouts/gamescore"}}
+    <div class="review-breakdown has-multiple-reviews" style="padding-top: 100px;">
+        <div class="review-breakdown__inner">
+            <div class="container row">
+                <div class="related-game related-game--main clearfix">
+                    <div class="related-game__boxart">
+                        <figure>
+                            <img src="{{.scorereview.Avatar}}"
+                                 alt="Dark Souls III">
+                        </figure>
+                    </div>
+                    <h3 class="related-game__title">
+                        <a href="/dark-souls-iii/">{{.scorereview.Name}}</a> / <span class="related-game__platforms">
+                            {{$plat := json2stringslice .scorereview.Platform}}
+                            {{range $i, $v := $plat}}
+                                {{ if ne $i 0 }}
+                                    &amp;
+                                {{ end }}
+                                <strong>{{$v}} </strong>
+                            {{end}}
+{{/*                                      <strong>PlayStation 4</strong>*/}}
+{{/*               &amp;                           <strong>Xbox One</strong>*/}}
+{{/*               &amp;                           <strong>PC</strong>*/}}
+                                      </span>
+                    </h3>
+                </div>
+                <dl class="breakdown breakdown-good span6">
+                    <dt><span>优点</span></dt>
+{{/*                    <dd class="breakdown-good__item"><i>*/}}
+{{/*                            <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"*/}}
+{{/*                                 class="symbol symbol-plus-sign">*/}}
+{{/*                                <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-4v-4q0-0.406-0.297-0.703t-0.703-0.297h-2q-0.406 0-0.703 0.297t-0.297 0.703v4h-4q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h4v4q0 0.406 0.297 0.703t0.703 0.297h2q0.406 0 0.703-0.297t0.297-0.703v-4h4q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </i> A fitting extension of Dark Souls III*/}}
+{{/*                    </dd>*/}}
+{{/*                    <dd class="breakdown-good__item"><i>*/}}
+{{/*                            <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"*/}}
+{{/*                                 class="symbol symbol-plus-sign">*/}}
+{{/*                                <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-4v-4q0-0.406-0.297-0.703t-0.703-0.297h-2q-0.406 0-0.703 0.297t-0.297 0.703v4h-4q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h4v4q0 0.406 0.297 0.703t0.703 0.297h2q0.406 0 0.703-0.297t0.297-0.703v-4h4q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </i> Impressive final boss*/}}
+{{/*                    </dd>*/}}
+{{/*                    <dd class="breakdown-good__item"><i>*/}}
+{{/*                            <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"*/}}
+{{/*                                 class="symbol symbol-plus-sign">*/}}
+{{/*                                <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-4v-4q0-0.406-0.297-0.703t-0.703-0.297h-2q-0.406 0-0.703 0.297t-0.297 0.703v4h-4q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h4v4q0 0.406 0.297 0.703t0.703 0.297h2q0.406 0 0.703-0.297t0.297-0.703v-4h4q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </i> Diverse environment layouts*/}}
+{{/*                    </dd>*/}}
+{{/*                    <dd class="breakdown-good__item"><i>*/}}
+{{/*                            <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"*/}}
+{{/*                                 class="symbol symbol-plus-sign">*/}}
+{{/*                                <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-4v-4q0-0.406-0.297-0.703t-0.703-0.297h-2q-0.406 0-0.703 0.297t-0.297 0.703v4h-4q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h4v4q0 0.406 0.297 0.703t0.703 0.297h2q0.406 0 0.703-0.297t0.297-0.703v-4h4q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </i> Lots of new enemies and gear to discover*/}}
+{{/*                    </dd>*/}}
+                    {{$goodLList := json2stringslice .scorereview.Good}}
+                    {{range $i, $v := $goodLList}}
+                            <dd class="breakdown-good__item"><i>
+                                    <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"
+                                         class="symbol symbol-plus-sign">
+                                        <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-4v-4q0-0.406-0.297-0.703t-0.703-0.297h-2q-0.406 0-0.703 0.297t-0.297 0.703v4h-4q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h4v4q0 0.406 0.297 0.703t0.703 0.297h2q0.406 0 0.703-0.297t0.297-0.703v-4h4q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>
+                                    </svg>
+                                </i> {{$v}}
+                            </dd>
+                    {{end}}
+                </dl>
+                <dl class="breakdown breakdown-bad span6">
+                    <dt><span>缺点</span></dt>
+{{/*                    <dd class="breakdown-bad__item"><i>*/}}
+{{/*                            <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"*/}}
+{{/*                                 class="symbol symbol-minus-sign symbol--color-secondary">*/}}
+{{/*                                <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-12q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h12q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </i> Doesn't leave a lasting impression*/}}
+{{/*                    </dd>*/}}
+{{/*                    <dd class="breakdown-bad__item"><i>*/}}
+{{/*                            <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"*/}}
+{{/*                                 class="symbol symbol-minus-sign symbol--color-secondary">*/}}
+{{/*                                <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-12q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h12q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>*/}}
+{{/*                            </svg>*/}}
+{{/*                        </i> Abundant bonfires lessen exploration-based challenges*/}}
+{{/*                    </dd>*/}}
+                    {{$badLList := json2stringslice .scorereview.Bad}}
+                    {{range $i, $v := $badLList}}
+                        <dd class="breakdown-good__item"><i>
+                                <svg version="1.1" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"
+                                     class="symbol symbol-plus-sign">
+                                    <path d="M19 15v-2q0-0.406-0.297-0.703t-0.703-0.297h-4v-4q0-0.406-0.297-0.703t-0.703-0.297h-2q-0.406 0-0.703 0.297t-0.297 0.703v4h-4q-0.406 0-0.703 0.297t-0.297 0.703v2q0 0.406 0.297 0.703t0.703 0.297h4v4q0 0.406 0.297 0.703t0.703 0.297h2q0.406 0 0.703-0.297t0.297-0.703v-4h4q0.406 0 0.703-0.297t0.297-0.703zM24 14q0 3.266-1.609 6.023t-4.367 4.367-6.023 1.609-6.023-1.609-4.367-4.367-1.609-6.023 1.609-6.023 4.367-4.367 6.023-1.609 6.023 1.609 4.367 4.367 1.609 6.023z"></path>
+                                </svg>
+                            </i> {{$v}}
+                        </dd>
+                    {{end}}
+                </dl>
+                <dl class="breakdown breakdown-score">
+                    <dt class="review-score">
+                        <div class="gs-score  gs-score--large score-{{.scorereview.Score}}">
+                            <div class="gs-score__clip">
+                                <div class="gs-score__pie gs-score__spinner"></div>
+                            </div>
+                            <div class="gs-score__clip gs-score__clip2">
+                                <div class="gs-score__pie gs-score__filler"></div>
+                            </div>
+                            <div class="gs-score__inner">
+                                <div class="gs-score__table">
+                                    <div class="gs-score__cell"><span aria-label="Review score {{.scorereview.Score}}" tabindex="0">{{.scorereview.Score}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dd class="score-word">{{.scorereview.Scoreword}}</dd>
+                    {{/*                    <dd class="score-about"><a href="//gamespot.com/review-guidelines/">About GameSpot's Reviews</a>*/}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+{{end}}
