@@ -2,8 +2,6 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
-	"mxcms/app/middleware"
-	"mxcms/mxcore/utils"
 	"net/http"
 )
 
@@ -24,9 +22,10 @@ func Index(context *gin.Context) {
 	//// 创建
 	////app.Db.CreateTable(&dbmodels.GameReview{})
 	//app.Db.Create(&GameReview)
-	context.HTML(http.StatusOK, "admin/index/index.tmpl",gin.H{
-		"ok":"Ok",
-		"Username":middleware.ParseHeadOrCookie(context, utils.ASYUSERID),
-		"Rolename":middleware.ParseHeadOrCookie(context, utils.ASTROLE),
-	} )
+	context.Set("response", gin.H{
+		"code":http.StatusOK,
+		"template":"admin/index/index.tmpl",
+		"message":gin.H{
+		},
+	})
 }

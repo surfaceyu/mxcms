@@ -1,9 +1,7 @@
 package middleware
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
-	"mxcms/mxcore/utils"
 )
 
 func CheckLogin(ctx *gin.Context) {
@@ -33,15 +31,4 @@ func ParseHeadOrCookie(ctx *gin.Context, k string) string {
 		v, _ = ctx.Cookie(k)
 	}
 	return v
-}
-
-func Admininfo() gin.HandlerFunc {
-	return func(ctx *gin.Context) {
-		id := ParseHeadOrCookie(ctx, utils.ASYUSERID)
-		//ctx.HTML(http.StatusOK, gin.H{
-		//	Username:id,
-		//})
-		fmt.Println(ctx.Params, id)
-		ctx.Next()
-	}
 }
