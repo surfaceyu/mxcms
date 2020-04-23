@@ -8,10 +8,24 @@ import (
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-micro/v2/server"
+
+	//"mxcms/app"
 	"mxcms/app/rpcsvr/handler"
 	"mxcms/mxcore/discovery"
 	"time"
 )
+
+func logWrapper(fn server.HandlerFunc) server.HandlerFunc {
+	start := time.Now()
+	return func(ctx context.Context, req server.Request, rsp interface{}) error {
+		err := fn(ctx, req, rsp)
+		if err != nil {
+			glog.Errorf("%s %s", time.Since(start), req.Endpoint())
+		}
+		glog.Infof("%s %s", time.Since(start), req.Endpoint())
+		return err
+	}
+}
 
 var glog *golog.Logger = golog.New("mx-rpc-server")
 
@@ -29,17 +43,10 @@ func Start() {
 	server.Init()
 	service.Server().Init(server.Wait(nil))
 	micro.RegisterHandler(service.Server(), new(handler.Handlers))
+
 	service.Run()
 }
 
-func logWrapper(fn server.HandlerFunc) server.HandlerFunc {
-	start := time.Now()
-	return func(ctx context.Context, req server.Request, rsp interface{}) error {
-		err := fn(ctx, req, rsp)
-		if err != nil {
-			glog.Errorf("%s %s", time.Since(start), req.Endpoint())
-		}
-		glog.Infof("%s %s", time.Since(start), req.Endpoint())
-		return err
-	}
-}
+//func main() {
+//	Start()
+//}

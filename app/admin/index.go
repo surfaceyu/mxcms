@@ -1,9 +1,9 @@
 package admin
 
 import (
-	//"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"html/template"
+	//"mxcms/app"
 	"mxcms/app/admin/controller"
 	"mxcms/app/middleware"
 	mxcoreutils "mxcms/mxcore/utils"
@@ -17,6 +17,21 @@ func SiteConfig() gin.H{
 		"MXCMS_VERSION":"0..0.1",
 	}
 }
+
+//func initEtcd() {
+//	urls := discovery.GetEtcdUrls()
+//	reg := etcd.NewRegistry(func(op *registry.Options) {
+//		op.Addrs = urls
+//	})
+//
+//	service := micro.NewService(
+//		micro.Registry(reg),
+//		micro.Name("micro.qgn.admin"),
+//	)
+//	//server.Init()
+//	//service.Server().Init(server.Wait(nil))
+//	go service.Run()
+//}
 
 func Start() {
 	app := gin.New()
@@ -41,5 +56,9 @@ func Start() {
 	})
 	app.LoadHTMLGlob("app/admin/views/**/*")
 	app.Run(":8080")
+}
+
+func main(){
+	Start()
 }
 

@@ -37,3 +37,4 @@ func randomString(size int, max int) string {
 func Random62String(size int) string {
 	return randomString(size, 62)
 }
+

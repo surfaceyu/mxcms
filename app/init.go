@@ -15,13 +15,6 @@ const (
 
 var Db *gorm.DB
 
-func init() {
-	fmt.Println("init databases")
-	loadConfig()
-	Db = mysql.InitMysql()
-	//databases.InitRedis()
-}
-
 func loadConfig() {
 	if err := config.Load(file.NewSource(
 		file.WithPath(defaultConfigPath),
@@ -29,4 +22,19 @@ func loadConfig() {
 		log.Panic(err)
 	}
 	fmt.Println("loadConfig", config.Map())
+}
+
+func init() {
+	Appinit()
+}
+
+func Appinit() {
+	//fmt.Println("init databases")
+	loadConfig()
+	Db = mysql.InitMysql()
+	Db.SingularTable(true)
+
+	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
+		return "mx_" + defaultTableName
+	}
 }

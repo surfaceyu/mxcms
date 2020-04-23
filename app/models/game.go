@@ -11,4 +11,23 @@ type GameReview struct{
 	Scoreword string `json:"scoreword" gorm:"type:varchar(20);not null;"`
 }
 
+type Menu struct {
+	Id int `gorm:"smallint(6) unsigned NOT NULL AUTO_INCREMENT,"`
+	Name string `gorm:"char(40) NOT NULL DEFAULT '',"`
+	Parentid int `gorm:"smallint(6) NOT NULL DEFAULT '0',"`
+	M string `gorm:"char(20) NOT NULL DEFAULT '',"`
+	C string `gorm:"char(20) NOT NULL DEFAULT '',"`
+	A string `gorm:"char(30) NOT NULL DEFAULT '',"`
+	Data string `gorm:"char(100) NOT NULL DEFAULT '',"`
+	Listorder int `gorm:"smallint(6) unsigned NOT NULL DEFAULT '0',"`
+	Display int `gorm:"tinyint(1) NOT NULL DEFAULT '0',"`
+}
+
+type AdminRolePriv struct {
+	Roleid int `gorm:tinyint(3) unsigned NOT NULL DEFAULT '0',`
+	M string `gorm:char(20) NOT NULL DEFAULT '',`
+	C string `gorm:char(20) NOT NULL DEFAULT '',`
+	A string `gorm:char(30) NOT NULL DEFAULT '',`
+	Data string `gorm:char(100) NOT NULL DEFAULT '',`
+}
 
