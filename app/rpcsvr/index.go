@@ -1,4 +1,4 @@
-package rpcsvr
+package main
 
 import (
 	"context"
@@ -47,6 +47,6 @@ func Start() {
 	service.Run()
 }
 
-//func main() {
-//	Start()
-//}
+func main() {
+	Start()
+}

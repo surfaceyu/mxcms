@@ -13,7 +13,7 @@ func Login(username string, password string) (*models.AdminUser) {
 
 func GetMenu(where string, args ...interface{}) (*[]models.Menu) {
 	var result []models.Menu
-	app.Db.Where(where, args...).Find(&result)
+	app.Db.Where(where, args...).Order("listorder ASC").Find(&result)
 	return &result
 }
 

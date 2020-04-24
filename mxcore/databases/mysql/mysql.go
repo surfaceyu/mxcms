@@ -7,6 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/micro/go-micro/v2/config"
+	"time"
 )
 
 func InitMysql() *gorm.DB {
@@ -23,6 +24,8 @@ func InitMysql() *gorm.DB {
 	if err != nil {
 		panic("连接数据库失败")
 	}
-
+	mysqlClient.DB().SetMaxIdleConns(config.Get("mysql", "MaxIdleConns").Int(5))
+	mysqlClient.DB().SetMaxOpenConns(config.Get("mysql", "MaxOpenConns").Int(50))
+	mysqlClient.DB().SetConnMaxLifetime(100*time.Second)
 	return mysqlClient
 }

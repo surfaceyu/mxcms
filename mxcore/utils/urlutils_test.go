@@ -23,6 +23,11 @@ func TestStart(t *testing.T) {
 		Path:"/index",
 		Handler:"mxcms/app/admin/controller.Index",
 	})
+	RouteInfos = append(RouteInfos, gin.RouteInfo{
+		Method:"GET",
+		Path:"/index/",
+		Handler:"mxcms/app/admin/controller.Index",
+	})
 	s1:=URLFor(RouteInfos)("Logout", "name", "astaxie", "age", "25")
 	s2:=URLFor(RouteInfos)("Login", ":name", "astaxie", ":age", "25")
 	s3:=URLFor(RouteInfos)("Login")
