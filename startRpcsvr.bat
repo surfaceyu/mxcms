@@ -1,0 +1,1 @@
+go run app/rpcsvr/app.go

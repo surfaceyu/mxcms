@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"mxcms/app/models"
 	"mxcms/app/rpccli"
@@ -10,11 +11,16 @@ import (
 func Index(context *gin.Context) {
 	res := new([]models.Msgmenu)
 	_ = rpccli.Call("GetAdminMenu", 1, res)
+
+	session := sessions.Default(context)
+	adminUser:= session.Get("Admin")
+
 	context.Set("response", gin.H{
 		"code":http.StatusOK,
 		"template":"admin/index/index.tmpl",
 		"message":gin.H{
 			"Menu" : res,
+			"adminUser":adminUser,
 		},
 	})
 }
@@ -26,18 +32,15 @@ func PublicHome(context *gin.Context) {
 		2,4,6,8,
 	}
 
-	admininfo := models.AdminUser{
-		1,"yzmcms","2894f6dbfdad0f278b5d2f339045a5f1",
-		1,"超级管理员","","","",0,
-		"0","1587363988","系统",
-	}
+	session := sessions.Default(context)
+	adminUser:= session.Get("Admin")
 
 	context.Set("response", gin.H{
 		"code":http.StatusOK,
 		"template":"admin/layouts/publichome",
 		"message":gin.H{
 			"count" : count,
-			"admininfo":admininfo,
+			"admininfo":adminUser,
 		},
 	})
 }

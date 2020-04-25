@@ -7,6 +7,7 @@ import (
 	"github.com/micro/go-micro/v2/config/source/file"
 	"log"
 	"mxcms/mxcore/databases/mysql"
+	"mxcms/mxcore/databases/redis"
 )
 
 const (
@@ -37,4 +38,6 @@ func Appinit() {
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 		return "mx_" + defaultTableName
 	}
+
+	redis.InitRedis()
 }

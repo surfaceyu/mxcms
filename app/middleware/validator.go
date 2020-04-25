@@ -1,10 +1,20 @@
 package middleware
 
 import (
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"mxcms/app/models"
+	"net/http"
 )
 
-func CheckLogin(ctx *gin.Context) {
+func CheckLogin(context *gin.Context) {
+	session := sessions.Default(context)
+	adminUser:= session.Get("Admin")
+	if adminUser != nil && adminUser.(models.AdminUser).Adminid > 0 {
+		context.Next()
+		return
+	}
+	context.Redirect(http.StatusMovedPermanently, "/login")
 	//id := ParseHeadOrCookie(ctx, utils.ASYUSERID)
 	//token := ParseHeadOrCookie(ctx, utils.ASYTOKEN)
 	//
@@ -22,7 +32,7 @@ func CheckLogin(ctx *gin.Context) {
 	//if v == token {
 	//	ctx.Next()
 	//}
-	ctx.Next()
+	//context.Next()
 }
 
 func ParseHeadOrCookie(ctx *gin.Context, k string) string {

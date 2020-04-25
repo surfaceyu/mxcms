@@ -36,9 +36,9 @@ func Start() {
 	})
 
 	service := micro.NewService(
-		micro.Registry(reg),
 		micro.Name(config.Get("srv").String("micro.qgn.srv")),
 		micro.WrapHandler(logWrapper),
+		micro.Registry(reg),
 	)
 	server.Init()
 	service.Server().Init(server.Wait(nil))

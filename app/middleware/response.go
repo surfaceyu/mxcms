@@ -12,8 +12,8 @@ func ReponseAdmin()  gin.HandlerFunc {
 		message := response["message"].(gin.H)
 		//message["Username"] = ParseHeadOrCookie(context, utils.ASYUSERID)
 		//message["Rolename"] = ParseHeadOrCookie(context, utils.ASTROLE)
-		message["Username"] = "Username"
-		message["Rolename"] = "管理员"
+		//message["Username"] = "Username"
+		//message["Rolename"] = "管理员"
 		context.HTML(response["code"].(int), response["template"].(string), message)
 	}
 }

@@ -1,10 +1,5 @@
 package models
 
-type Login struct {
-	Username string `json:"username" form:"username"`
-	Password string `json:"password" form:"password"`
-}
-
 type AdminUser struct {
 	Adminid int `gorm:"MEDIUMINT(6) UNSIGNED NOT NULL AUTO_INCREMENT"`
 	Adminname string `gorm:"VARCHAR(30) NOT NULL DEFAULT ''"`

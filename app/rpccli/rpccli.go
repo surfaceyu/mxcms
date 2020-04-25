@@ -22,7 +22,7 @@ func Call(method string, req interface{}, rsp interface{}) error {
 	request := cli.NewRequest(name, fmt.Sprintf("Handlers.%s", method), req, client.WithContentType("application/json"))
 
 	if err := cli.Call(context.TODO(), request, &rsp); err != nil {
-		fmt.Println(err)
+		fmt.Println("grpc call faild ,err = ",err)
 		return err
 	}
 

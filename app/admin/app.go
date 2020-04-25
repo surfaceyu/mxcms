@@ -1,6 +1,11 @@
 package main
 
 import (
+	"encoding/gob"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
+	"mxcms/app/models"
+
 	"github.com/gin-gonic/gin"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
@@ -56,6 +61,10 @@ func initEtcd() {
 
 
 func initRouter(app *gin.Engine) {
+	gob.Register(models.AdminUser{})
+	store := cookie.NewStore([]byte("secret"))
+	app.Use(sessions.Sessions("mxsession", store))
+
 	app.Static("favicon.ico","./public/favicon.ico")
 
 	initGroupLogin(app)
